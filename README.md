@@ -71,8 +71,6 @@ API URL managed via VITE_API_URL environment variable
    ➤ Builds a URL with the filters
    ➤ Calls the API service, which uses fetch(...)
 
----
-
 ## In Code:
 
 ## 1. You Submit the Filter Form
@@ -87,8 +85,6 @@ stars: stars || undefined,
 });
 This calls the onFilter function passed from MovieList, with all selected filters.
 
----
-
 ## 2. onFilter is Actually fetchMovies from useFetchMovies
 
 In MovieList.tsx:
@@ -96,8 +92,6 @@ In MovieList.tsx:
 const { movies, sql, params, fetchMovies } = useFetchMovies();
 <FilterPanel onFilter={fetchMovies} />
 So onFilter(...) becomes fetchMovies(filters).
-
----
 
 ## 3. fetchMovies(filters) Calls movieService.getMovies(filters)
 
@@ -110,8 +104,6 @@ setSql(data.sql || '');
 setParams(data.params || []);
 });
 };
-
----
 
 ## 4. movieService.getMovies(filters) Builds the URL
 
