@@ -13,13 +13,13 @@ const App: React.FC = () => {
         <div className="flex space-x-4">
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           >
             Explore Movies
           </button>
           <button
             onClick={() => navigate('/reviews')}
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+            className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           >
             Explore Reviews
           </button>

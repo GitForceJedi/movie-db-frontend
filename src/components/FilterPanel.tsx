@@ -64,7 +64,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ onFilter }) => {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-3 py-1 rounded mt-6"
+          className="bg-orange-600 text-white px-3 py-1 rounded mt-6 hover:bg-blue-700 transition"
         >
           Apply Filters
         </button>
