@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Movie } from '../types';
+import { useState } from 'react';
+import { useFetchMovies } from '../hooks/useFetchMovies';
 
 interface ReviewFilterProps {
   onFilter: (filters: any) => void;
 }
 
 const ReviewFilter: React.FC<ReviewFilterProps> = ({ onFilter }) => {
+  const { movies } = useFetchMovies();
   const [rating, setRating] = useState('');
   const [reviewerType, setReviewerType] = useState('');
   const [stars, setStars] = useState('');
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [movieId, setMovieId] = useState('');
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/movies`)
-      .then((res) => res.json())
-      .then((data) => {
-        const moviesArray = Array.isArray(data) ? data : data.data;
-        if (Array.isArray(moviesArray)) {
-          setMovies(moviesArray);
-        } else {
-          console.error('Movie response not an array:', data);
-        }
-      })
-      .catch((err) => console.error('Failed to fetch movies:', err));
-  }, []);
-  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

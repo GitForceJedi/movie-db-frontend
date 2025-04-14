@@ -1,41 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import MovieDropdown from './MovieDropdown';
 import ReviewFilter from './ReviewFilter';
+import { useFetchReviews } from '../hooks/useFetchReviews';
 
-import { Review, ReviewResponse } from '../types';
-
-interface Filters {
-  rating?: string;
-  reviewerType?: string;
-  stars?: string;
-  movieId?: number | null;
-}
 const ReviewList: React.FC = () => {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [sql, setSql] = useState('');
-  const [params, setParams] = useState<any[]>([]);
-
-  const fetchReviews = (filters: any = {}) => {
-    const url = new URL(`${import.meta.env.VITE_API_URL}/reviews`);
-    Object.entries(filters).forEach(([key, val]) => {
-      if (val !== undefined && val !== '') {
-        url.searchParams.append(key, val != null ? val.toString() : '');
-      }
-    });
-    
-
-    fetch(url.toString())
-      .then(res => res.json())
-      .then((data: ReviewResponse) => {
-        setReviews(data.data || []);
-        setSql(data.sql || '');
-        setParams(data.params || []);
-      });
-  };
-
-  useEffect(() => {
-    fetchReviews();
-  }, []);
+  const { reviews, sql, params, fetchReviews } = useFetchReviews();
 
   return (
     <div className="mt-10">
@@ -56,7 +23,6 @@ const ReviewList: React.FC = () => {
           </li>
         ))}
       </ul>
-      
     </div>
   );
 };
