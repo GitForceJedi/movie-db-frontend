@@ -1,16 +1,17 @@
 {
-  "name": "movie-review-client",
+  "name": "movie-db-frontend",
   "version": "0.0.1",
-  "homepage": "https://gitforcegedi.github.io/movie-db-frontend/",
+  "homepage": "https://gitforcegedi.github.io/movie-db-frontend",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && cp dist/index.html dist/404.html",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
+    "movie-db-frontend": "file:",
     "movie-review-client": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
